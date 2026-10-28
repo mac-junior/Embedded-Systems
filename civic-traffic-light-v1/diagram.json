@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "author": "Mac",
+  "editor": "wokwi",
+  "notes": "Research Lab Baseline: Single-Lane Traffic Light Controller with 220 Ohm Current Limiting Resistors",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -40,
+      "left": 200,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 20,
+      "left": 200,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -40,
+      "left": 260,
+      "attrs": { "color": "yellow" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 20,
+      "left": 260,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": -40,
+      "left": 320,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 20,
+      "left": 320,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "Serial Monitor Debug Link TX", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "Serial Monitor Debug Link RX", [] ],
+
+    [ "esp:D15", "led1:A", "RED LED Anode (+) link to GPIO D15", [] ],
+    [ "led1:C", "r1:1", "RED LED Cathode (-) to Resistor Pin 1", [] ],
+    [ "r1:2", "esp:GND.1", "RED Resistor Pin 2 to Common ground GND.1", [] ],
+
+    [ "esp:D2", "led2:A", "YELLOW LED Anode (+) link to GPIO D2", [] ],
+    [ "led2:C", "r2:1", "YELLOW LED Cathode (-) to Resistor Pin 1", [] ],
+    [ "r2:2", "esp:GND.1", "YELLOW Resistor Pin 2 to Common ground GND.1", [] ],
+
+    [ "esp:D4", "led3:A", "GREEN LED Anode (+) link to GPIO D4", [] ],
+    [ "led3:C", "r3:1", "GREEN LED Cathode (-) to Resistor Pin 1", [] ],
+    [ "r3:2", "esp:GND.1", "GREEN Resistor Pin 2 to Common ground GND.1", [] ]
+  ],
+  "dependencies": {}
+}
