@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "author": "Mac",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": -140, "left": 184.62, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "alarm_led",
+      "top": 44.4,
+      "left": 224.6,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_alarm",
+      "top": 100,
+      "left": 220,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-buzzer", "id": "buzzer1", "top": -36, "left": 299.4, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:3V3", "pir1:VCC", "red", [] ],
+    [ "esp:D13", "pir1:OUT", "purple", [] ],
+    [ "esp:GND.1", "pir1:GND", "black", [] ],
+    [ "esp:D15", "alarm_led:A", "red", [] ],
+    [ "alarm_led:C", "r_alarm:1", "black", [] ],
+    [ "r_alarm:2", "esp:GND.2", "black", [] ],
+    [ "esp:D4", "buzzer1:2", "orange", [] ],
+    [ "esp:GND.2", "buzzer1:1", "black", [] ]
+  ],
+  "dependencies": {}
+}
